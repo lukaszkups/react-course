@@ -16,6 +16,7 @@ class App extends Component {
   switchNameHandler = () => {
     // DON'T DO THIS (mutate state directly):
     // this.state.persons[0].name = this.state.persons[0].name === 'Max' ? 'Maximilian' : 'Max';
+    // instead do this
     this.setState({persons: [
       {name : this.state.persons[0].name === 'Max' ? 'Maximilian' : 'Max', age: 28},
       {name : 'Abel', age: 31},
