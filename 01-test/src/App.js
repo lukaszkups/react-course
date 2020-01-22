@@ -6,16 +6,16 @@ import UserOutput from './User/UserOutput';
 class App extends Component {
   state = {
     users: [
-      {username: 'Bob', age: 23},
-      {username: 'Cloe', age: 33},
-      {username: 'Vasquez', age: 19}
+      {id: 1, username: 'Bob', age: 23},
+      {id: 2, username: 'Cloe', age: 33},
+      {id: 3, username: 'Vasquez', age: 19}
     ],
     showList: false
   }
 
-  changeName = (index, event) => {
+  changeName = (event, id) => {
     let usersCopy = [...this.state.users];
-    usersCopy[index].username = event.target.value;
+    usersCopy[usersCopy.findIndex((obj) => obj.id === id)].username = event.target.value;
     this.setState({users: usersCopy});
   }
 
@@ -23,18 +23,29 @@ class App extends Component {
     this.setState({showList: !this.state.showList})
   }
 
+  deleteListEntry = (id) => {
+    let usersCopy = [...this.state.users];
+    usersCopy.splice(usersCopy.findIndex((obj) => obj.id === id), 1);
+    this.setState({users: usersCopy});
+  }
+
   render () {
     let list = null;
-
     if (this.state.showList) {
       list = (
         <div>
-          <UserOutput username={this.state.users[0].username} age={this.state.users[0].age}></UserOutput>
-          <UserInput changed={(e) => this.changeName(0, e)} username={this.state.users[0].username}></UserInput>
-          <UserOutput username={this.state.users[1].username} age={this.state.users[1].age}></UserOutput>
-          <UserInput changed={(e) => this.changeName(1, e)} username={this.state.users[1].username}></UserInput>
-          <UserOutput username={this.state.users[2].username} age={this.state.users[2].age}></UserOutput>
-          <UserInput changed={(e) => this.changeName(2, e)} username={this.state.users[2].username}></UserInput>
+          {this.state.users.map((user, index) => {
+            return (
+              <div key={user.id}>
+                <UserOutput username={user.username} age={user.age}></UserOutput>
+                <UserInput
+                  changed={(e) => this.changeName(e, user.id)}
+                  username={user.username}
+                  delete={() => this.deleteListEntry(user.id)}
+                ></UserInput>
+              </div>
+            )
+          })}
         </div>
       );
     }

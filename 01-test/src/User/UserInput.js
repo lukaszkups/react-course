@@ -5,6 +5,7 @@ const UserInput = (props) => {
   return (
     <div className="User User-input">
       <input type="text" onChange={props.changed} value={props.username} />
+      <button onClick={props.delete}>Delete</button>
     </div>
   );
 }
