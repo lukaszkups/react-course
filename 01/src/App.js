@@ -18,12 +18,12 @@ class App extends Component {
   }
 
   // event list you can listen: https://reactjs.org/docs/events.html#supported-events
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     // DON'T DO THIS (mutate state directly):
     // this.state.persons[0].name = this.state.persons[0].name === 'Max' ? 'Maximilian' : 'Max';
     // instead do this
     this.setState({persons: [
-      {name : this.state.persons[0].name === 'Max' ? 'Maximilian' : 'Max', age: 28},
+      {name : newName, age: 28},
       {name : 'Abel', age: 31},
       {name : 'Steph', age: 19},
     ]})
@@ -34,10 +34,20 @@ class App extends Component {
       <div className="App">
         <h1 className="App-title">I am a react app</h1>
         <p>It's working!</p>
-        <button onClick={this.switchNameHandler}>Change names</button>
-          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-    <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobbies: {this.state.oneHobby}</Person>
-          <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Change names</button>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+            // this is one way of passing function as argument
+            click={() => this.switchNameHandler('Maxie')}
+          />
+          <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobbies: {this.state.oneHobby}</Person>
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+            // this is other way of passing function as argument
+            click={this.switchNameHandler.bind(this, 'Max!')}
+          />
       </div>
     );
     // the same

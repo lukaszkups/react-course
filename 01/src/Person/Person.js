@@ -7,7 +7,7 @@ import React from 'react' // this needs to be imported to parse jsx!
 const person = (props) => {
   return (
     <div>
-      <p>I'm a {props.name} and I'm {props.age} years old!</p>
+      <p onClick={props.click}>I'm a {props.name} and I'm {props.age} years old!</p>
       <p>{props.children}</p>
     </div>
   );
