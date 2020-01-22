@@ -29,6 +29,14 @@ class App extends Component {
     ]})
   }
 
+  nameChangeHandler = (event) => {
+    this.setState({persons: [
+      {name : 'Max', age: 28},
+      {name : event.target.value, age: 31},
+      {name : 'Steph', age: 19},
+    ]})
+  }
+
   render() {
     return (
       <div className="App">
@@ -41,11 +49,15 @@ class App extends Component {
             // this is one way of passing function as argument
             click={() => this.switchNameHandler('Maxie')}
           />
-          <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobbies: {this.state.oneHobby}</Person>
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            changed={this.nameChangeHandler}
+          >My hobbies: {this.state.oneHobby}</Person>
           <Person
             name={this.state.persons[2].name}
             age={this.state.persons[2].age}
-            // this is other way of passing function as argument
+            // this is other way of passing function as argument, THIS ONE IS RECOMMENDED
             click={this.switchNameHandler.bind(this, 'Max!')}
           />
       </div>
