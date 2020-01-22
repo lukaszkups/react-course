@@ -5,6 +5,7 @@ import Person from './Person/Person'
 // import React, {useState} from 'react';
 
 // traditional version
+// this is stateFUL component as it can manage state, called also SMART components or container
 class App extends Component {
   // state is reserved word here
   state = {
