@@ -60,8 +60,20 @@ class App extends Component {
       style.backgroundColor = 'red';
     }
 
+    // let classes = ['red', 'bold'].join(' '); // need to make it valid css class string: "red bold"
+    const classes = [];
+    if (this.state.users.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.users.length <= 1) {
+      classes.push('bold');
+    }
+
+
     return (
       <div className="App">
+        <h1>The react app</h1>
+        <p className={classes.join(' ')}>App is working!</p>
         <button
           style={style}
           onClick={() => this.toggleList()}
