@@ -30,6 +30,15 @@ class App extends Component {
   }
 
   render () {
+    let style = {
+      backgroundColor: 'green',
+      color: 'white',
+      font: 'inherit',
+      border: 'none',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
     let list = null;
     if (this.state.showList) {
       list = (
@@ -48,11 +57,15 @@ class App extends Component {
           })}
         </div>
       );
+      style.backgroundColor = 'red';
     }
 
     return (
       <div className="App">
-        <button onClick={() => this.toggleList()}>Toggle list</button>
+        <button
+          style={style}
+          onClick={() => this.toggleList()}
+        >Toggle list</button>
         {list}
       </div>
     );
