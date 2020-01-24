@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import UserInput from './User/UserInput';
 import UserOutput from './User/UserOutput';
+import Radium from 'radium';
 
 class App extends Component {
   state = {
@@ -36,7 +37,11 @@ class App extends Component {
       font: 'inherit',
       border: 'none',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
 
     let list = null;
@@ -58,6 +63,10 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
     }
 
     // let classes = ['red', 'bold'].join(' '); // need to make it valid css class string: "red bold"
@@ -84,4 +93,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);

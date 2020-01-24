@@ -1,4 +1,5 @@
 import React from 'react';
+import Radium from 'radium';
 
 const UserInput = (props) => {
   const style = {
@@ -12,4 +13,4 @@ const UserInput = (props) => {
   );
 }
 
-export default UserInput;
+export default Radium(UserInput);
