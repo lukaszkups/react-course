@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './App.css';
 import UserInput from './User/UserInput';
 import UserOutput from './User/UserOutput';
-import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
   state = {
@@ -80,19 +79,17 @@ class App extends Component {
 
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>The react app</h1>
-          <p className={classes.join(' ')}>App is working!</p>
-          <button
-            style={style}
-            onClick={() => this.toggleList()}
-          >Toggle list</button>
-          {list}
-        </div>
-      </StyleRoot>
+      <div className="App">
+        <h1>The react app</h1>
+        <p className={classes.join(' ')}>App is working!</p>
+        <button
+          style={style}
+          onClick={() => this.toggleList()}
+        >Toggle list</button>
+        {list}
+      </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;

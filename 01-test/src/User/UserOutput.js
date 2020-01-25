@@ -1,5 +1,5 @@
 import React from 'react';
-import Radium from 'radium';
+import styled from 'styled-components';
 
 const UserInput = (props) => {
   const style = {
@@ -16,4 +16,4 @@ const UserInput = (props) => {
   );
 }
 
-export default Radium(UserInput);
+export default UserInput;
